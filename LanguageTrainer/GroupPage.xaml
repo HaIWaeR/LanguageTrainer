@@ -1,0 +1,197 @@
+﻿<Page x:Class="LanguageTrainer.GroupPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="GroupPage"
+      Background="#272537">
+
+    <Grid>
+        <Viewbox Stretch="Fill">
+            <Grid Width="800" Height="450">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="0.78*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Background="#272537">
+                    <StackPanel>
+                        <Button Style="{StaticResource GroupButtonStyle}"
+                                Click="HomeButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Style="{StaticResource GroupButtonIconStyle}"
+                                       Source="https://img.icons8.com/ios/500/home--v1.png"/>
+                                <TextBlock Style="{StaticResource GroupButtonTextStyle}" Text="Домой"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Style="{StaticResource GroupButtonStyle}"
+                                Click="DictionaryButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Style="{StaticResource GroupButtonIconStyle}"
+                                       Source="https://img.icons8.com/ios/500/list--v1.png"/>
+                                <TextBlock Style="{StaticResource GroupButtonTextStyle}" Text="Словари"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Style="{StaticResource GroupButtonStyle}"
+                                Click="TrainingButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Style="{StaticResource GroupButtonIconStyle}"
+                                       Source="https://img.icons8.com/ios/500/dumbbell.png"/>
+                                <TextBlock Style="{StaticResource GroupButtonTextStyle}" Text="Тренироваться"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Border>
+
+                <GridSplitter Grid.Column="1" Style="{StaticResource GroupSplitterStyle}"/>
+
+                <Border Grid.Column="2" Background="Transparent" >
+                    <Grid>
+
+                        <Grid x:Name="DictionaryContent" Visibility="Visible">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" 
+                                       x:Name="DictionaryTitle"
+                                       Style="{StaticResource ContentTextBlockStyle}"
+                                       Text="Словари"/>
+
+                            <Grid x:Name="DictionariesListState" Grid.Row="1">
+                                <ScrollViewer x:Name="DictionariesScrollViewer"
+                                              Style="{StaticResource ContentScrollViewerStyle}">
+                                    <WrapPanel x:Name="DictionariesContainer">
+                                    </WrapPanel>
+                                </ScrollViewer>
+                            </Grid>
+
+                            <Grid x:Name="DictionaryViewState" Grid.Row="1" 
+                                  Visibility="Collapsed">
+                            </Grid>
+
+                            <Button Grid.Row="2" 
+                                    x:Name="AddDictionaryBtn"
+                                    Click="Create_List" 
+                                    Style="{StaticResource ContentActionButtonStyle}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource ContentActionButtonTextStyle}" 
+                                               Text="+ Добавить"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+
+
+
+                        <Grid x:Name="TrainingContent" Visibility="Collapsed">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Заголовок тренировки -->
+                            <TextBlock Grid.Row="0" 
+                                       x:Name="TrainingTitle"
+                                       Style="{StaticResource ContentTextBlockStyle}"
+                                       Text="Тренировать Английский"/>
+
+                            <!-- Список словарей для тренировки -->
+                            <Grid Grid.Row="1">
+                                <ScrollViewer x:Name="TrainingScrollViewer"
+                                              Style="{StaticResource ContentScrollViewerStyle}">
+                                    <WrapPanel x:Name="TrainingDictionariesContainer">
+                                    </WrapPanel>
+                                </ScrollViewer>
+                            </Grid>
+
+                            <StackPanel Grid.Row="2" 
+                                        x:Name="TrainingSettingsPanel"
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="0,0,0,10">
+
+                                <!-- 1. Направление перевода -->
+                                <Border Width="150" 
+                                        Height="30" 
+                                        Background="#58567D" 
+                                        CornerRadius="8"
+                                        Margin="10,0"
+                                        MouseLeftButtonDown="LanguageDirection_Click"
+                                        ToolTip="Направление перевода: Русский → Иностранный или Иностранный → Русский"
+                                        Cursor="Hand">
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock x:Name="LanguageDirectionText" 
+                                                   Text="→" 
+                                                   Foreground="White" 
+                                                   FontSize="14"
+                                                   HorizontalAlignment="Center"
+                                                   FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- 2. Режим тренировки -->
+                                <Border Width="150" 
+                                        Height="30" 
+                                        Background="#58567D" 
+                                        CornerRadius="8"
+                                        Margin="10,0"
+                                        MouseLeftButtonDown="TrainingMode_Click"
+                                        ToolTip="Режим тренировки: По очереди, Случайное, Бесконечное"
+                                        Cursor="Hand">
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock x:Name="TrainingModeText" 
+                                                   Text="▶" 
+                                                   Foreground="White" 
+                                                   FontSize="14"
+                                                   HorizontalAlignment="Center"
+                                                   FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- 3. Тип вопроса -->
+                                <Border Width="150" 
+                                        Height="30" 
+                                        Background="#58567D" 
+                                        CornerRadius="8"
+                                        Margin="10,0"
+                                        MouseLeftButtonDown="QuestionType_Click"
+                                        ToolTip="Тип вопроса: Полное слово или Пропущенные буквы"
+                                        Cursor="Hand">
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock x:Name="QuestionTypeText" 
+                                                   Text="ABC" 
+                                                   Foreground="White" 
+                                                   FontSize="14"
+                                                   HorizontalAlignment="Center"
+                                                   FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Кнопка "Начать тренировку" -->
+                            <Button Grid.Row="3" 
+                                    x:Name="StartTrainingBtn"
+                                    Click="StartTraining_Click"
+                                    Style="{StaticResource ContentActionButtonStyle}"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,0,0,10">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource ContentActionButtonTextStyle}" 
+                                               Text="Начать тренировку"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Page>

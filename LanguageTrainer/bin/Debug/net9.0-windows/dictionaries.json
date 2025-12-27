@@ -1,0 +1,69 @@
+[
+  {
+    "Name": "Color's",
+    "GroupName": "Английский",
+    "Words": [
+      {
+        "NativeWord": "Pink",
+        "ForeignWord": "розовый",
+        "IsLearned": false
+      },
+      {
+        "NativeWord": "green",
+        "ForeignWord": "зелёный",
+        "IsLearned": false
+      },
+      {
+        "NativeWord": "black ",
+        "ForeignWord": "чёрный",
+        "IsLearned": false
+      },
+      {
+        "NativeWord": "red",
+        "ForeignWord": "красный",
+        "IsLearned": false
+      },
+      {
+        "NativeWord": "Yellow ",
+        "ForeignWord": "жёлтый",
+        "IsLearned": false
+      },
+      {
+        "NativeWord": "Purple ",
+        "ForeignWord": "фиолетовый",
+        "IsLearned": false
+      },
+      {
+        "NativeWord": "Brown ",
+        "ForeignWord": "коричневый ",
+        "IsLearned": false
+      },
+      {
+        "NativeWord": "Gray",
+        "ForeignWord": "серый",
+        "IsLearned": false
+      }
+    ]
+  },
+  {
+    "Name": "Качества",
+    "GroupName": "Английский",
+    "Words": [
+      {
+        "NativeWord": "charming",
+        "ForeignWord": "очаровательный",
+        "IsLearned": false
+      },
+      {
+        "NativeWord": "big hearted",
+        "ForeignWord": "великодушный",
+        "IsLearned": false
+      },
+      {
+        "NativeWord": "easy going",
+        "ForeignWord": "спокойный",
+        "IsLearned": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,45 @@
+﻿<Window x:Class="LanguageTrainer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LanguageTrainer"
+        mc:Ignorable="d"
+        Title="Language Trainer" Width="800" Height="450" 
+        WindowState="Maximized">
+
+    <Window.Resources>
+        <ResourceDictionary Source="Styles.xaml"/>
+    </Window.Resources>
+
+    <Grid Background="#272537">
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Visibility="Collapsed"/>
+
+        <Viewbox x:Name="MainContent" Stretch="Fill">
+
+            <Grid Width="800" Height="450" ShowGridLines="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.25*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
+                        <WrapPanel x:Name="CategoriesContainer" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                        </WrapPanel>
+                    </ScrollViewer>
+                </Grid>
+
+                <Border Grid.Row="1">
+                    <Button 
+                        x:Name="CreateGroupButton"
+                        Content="Создать группу" 
+                        Click="CreateGroupButton_Click"
+                        Style="{StaticResource CreateGroupButtonStyle}"/>
+                </Border>
+                
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Window>
